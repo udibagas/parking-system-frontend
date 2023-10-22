@@ -54,15 +54,6 @@ export default {
 
   auth: {
     strategies: {
-      cookie: {
-        endpoints: {
-          login: { url: '/api/login' },
-          logout: { url: '/api/logout' },
-          user: { url: '/api/me' },
-          csrf: { url: '/sanctum/csrf-cookie' },
-        },
-      },
-      // sesuaikan di login.vue kalau mau pakai ini
       local: {
         token: {
           property: 'token',
@@ -71,10 +62,11 @@ export default {
         },
         user: {
           property: 'user',
-          // autoFetch: false,
+          autoFetch: true,
         },
         endpoints: {
           login: { url: '/api/auth/login', method: 'post' },
+          logout: { url: '/api/auth/logout', method: 'post' },
         },
       },
     },
