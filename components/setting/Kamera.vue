@@ -99,9 +99,11 @@
         </el-form-item>
 
         <el-form-item label="Status" :class="formErrors.status ? 'is-error' : ''">
-          <el-select v-model="formModel.status" placeholder="Status" style="width: 100%">
-            <el-option v-for="(t, i) in ['Tidak Aktif', 'Aktif']" :value="Boolean(i)" :label="t" :key="i"></el-option>
-          </el-select>
+          <el-switch :active-value="true" :inactive-value="false" v-model="formModel.status" active-color="#13ce66">
+          </el-switch>
+          <el-tag :type="formModel.status ? 'success' : 'info'" size="small"
+            style="margin-left: 10px">{{ !!formModel.status ? 'Aktif' : 'Tidak Aktif' }}</el-tag>
+
           <div class="el-form-item__error" v-if="formErrors.status">
             {{ formErrors.status[0] }}
           </div>
